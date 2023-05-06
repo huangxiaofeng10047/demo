@@ -33,5 +33,19 @@ public class UserController {
         Map<Object, Object> map = new HashMap<>();
         return R.ok(user);
     }
+    @GetMapping("/hello3")
+    public Object getInfo3(){
+        log.debug("debug ****************************");
+        log.info("info ****************************");
+        log.warn("warn ****************************");
+        log.error("error ****************************");
+        User user = User.builder()
+                .userName("111")
+                .userPwd("222")
+                .createTime(new Date()).build();
+        Map<Object, Object> map = new HashMap<>();
+        map.put("user",user);
+        return map;
+    }
 
 }
