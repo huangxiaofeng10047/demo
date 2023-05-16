@@ -2,3 +2,13 @@ server:
    port: 8081
 logging:
    config: classpath:log4j2.yml
+spring:
+   main:
+      lazy-initialization: true
+es:
+   client:
+      enabled: true
+      host: ${ELASTIC_HOST:localhost}
+      port: ${ELASTIC_PORT:9200}
+      username: ${ELASTIC_USER:elastic}
+      password: ${ELASTIC_PASSWORD:password}
