@@ -4,10 +4,12 @@ import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @SpringBootApplication
-@EnableElasticsearchRepositories(basePackages = "com.example.demo.dao")
+@EnableElasticsearchRepositories(basePackages = "com.example.demo.dao.es")
+@EnableJpaRepositories(basePackages = "com.example.demo.dao.jpa")
 public class DemoApplication {
 
     public static void main(String[] args) {

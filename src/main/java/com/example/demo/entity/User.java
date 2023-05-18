@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,9 +21,14 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Entity
+@Table(name = "users")
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", columnDefinition = "bigint(20) comment '主键'")
+    @jakarta.persistence.Id
     private Long id;
 
     @Field(type = FieldType.Keyword)
@@ -48,7 +54,8 @@ public class User {
     private String address;
 
     @GeoPointField
-    private GeoPoint location;
+    @Column(name = "location", columnDefinition = "point comment '经纬度'")
+    private String location;
 
     @Field(index = false, type = FieldType.Keyword)
     private String photo;
@@ -56,4 +63,5 @@ public class User {
     @Field(type = FieldType.Text, analyzer = "ik_smart")
 //    @Field(type = FieldType.Text)
     private String about;
+
 }

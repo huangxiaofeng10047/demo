@@ -1,4 +1,4 @@
-package com.example.demo.dao;
+package com.example.demo.dao.es;
 
 import com.example.demo.entity.User;
 import org.springframework.data.domain.Page;

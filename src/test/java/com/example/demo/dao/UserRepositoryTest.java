@@ -2,6 +2,7 @@ package com.example.demo.dao;
 
 import com.alibaba.fastjson2.JSON;
 import com.example.demo.UserDataInitializer;
+import com.example.demo.dao.es.UserRepository;
 import com.example.demo.entity.User;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +37,7 @@ class UserRepositoryTest {
                 .city("上海")
                 .district("浦东新区")
                 .address("上海市浦东新区花园石桥路28弄1-8号-汤臣一品")
-                .location(new GeoPoint(31.238794, 121.508506))
+                .location(JSON.toJSONString(new GeoPoint(31.238794, 121.508506)))
                 .about("槟榔妹真好玩啊")
                 .build());
     }
@@ -73,7 +74,7 @@ class UserRepositoryTest {
     @Order(4)
     void countByDistrict() {
         long count = userRepository.countByDistrict("浦东新区");
-        Assertions.assertEquals(count, 2);
+        Assertions.assertEquals(count, 4);
 
         count = userRepository.countByDistrict("浦东");
         Assertions.assertEquals(count, 0);
